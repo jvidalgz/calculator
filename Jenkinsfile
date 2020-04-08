@@ -14,7 +14,7 @@ pipeline {
         stage('code coverage'){
             steps{
                 sh './gradlew test jacocoTestReport'
-                publishHYML(target:[
+                publishHTML(target:[
                     reportDir: 'build/reports/jacoco/test/html',
                     reportFiles: 'index.html',
                     reportName: 'Jacoco Report',
