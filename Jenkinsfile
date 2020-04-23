@@ -32,5 +32,20 @@ pipeline {
                 ])
             }
         }
+        stage('package'){
+            steps{
+                sh './gradlew build'               
+            }
+        }
+        stage('docker build'){
+            steps{
+                sh 'docker build -t localhost:5000/calculator .'               
+            }
+        }
+        stage('docker push'){
+            steps{
+                sh 'docker push localhost:5000/calculator'               
+            }
+        }
     }
 }
