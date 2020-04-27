@@ -44,6 +44,7 @@ pipeline {
         }
         stage('docker push'){
             steps{
+                sh 'docker login localhost:5000'               
                 sh 'docker push localhost:5000/calculator'               
             }
         }
